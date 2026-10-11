@@ -1,7 +1,9 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
+import useViewportHeight from '../services/useViewportHeight.js';
 
 export default function Layout() {
+  useViewportHeight();
   return (
     <div className="min-h-screen">
       <Navbar />

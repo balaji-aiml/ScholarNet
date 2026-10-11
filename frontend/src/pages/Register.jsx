@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { DEPARTMENTS, YEARS } from '@shared/constants.js';
 import { errMsg } from '../services/format';
 import { ErrorText } from '../components/ui';
+import PasswordInput from '../components/PasswordInput';
 
 export default function Register() {
   const { user, register } = useAuth();
@@ -33,7 +34,7 @@ export default function Register() {
         <h1 className="text-3xl font-extrabold tracking-tight">Join ScholarNet</h1>
         <div><label className="label" htmlFor="n">Full name</label><input id="n" required className="input" value={form.name} onChange={set('name')} /></div>
         <div><label className="label" htmlFor="e">Email</label><input id="e" type="email" required className="input" value={form.email} onChange={set('email')} /></div>
-        <div><label className="label" htmlFor="p">Password (6+ characters)</label><input id="p" type="password" minLength={6} required className="input" value={form.password} onChange={set('password')} /></div>
+        <div><label className="label" htmlFor="p">Password (6+ characters)</label><PasswordInput id="p" minLength={6} autoComplete="new-password" value={form.password} onChange={set('password')} /></div>
         <fieldset>
           <legend className="label">I am a</legend>
           <div className="flex gap-2">

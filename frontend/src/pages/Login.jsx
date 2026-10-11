@@ -3,6 +3,7 @@ import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { errMsg } from '../services/format';
 import { ErrorText } from '../components/ui';
+import PasswordInput from '../components/PasswordInput';
 
 export default function Login() {
   const { user, login } = useAuth();
@@ -37,8 +38,9 @@ export default function Login() {
           <input id="email" type="email" required autoComplete="email" className="input" value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })} /></div>
         <div><label className="label" htmlFor="pw">Password</label>
-          <input id="pw" type="password" required autoComplete="current-password" className="input" value={form.password}
-            onChange={(e) => setForm({ ...form, password: e.target.value })} /></div>
+            <PasswordInput id="pw" autoComplete="current-password" value={form.password}
+            onChange={(e) => setForm({ ...form, password: e.target.value })} />
+        </div>
         <ErrorText>{error}</ErrorText>
         <button className="btn-dark w-full" disabled={busy}>{busy ? 'Signing in' : 'Sign in'}</button>
         <p className="text-center text-sm">New here? <Link to="/register" className="font-semibold underline">Create an account</Link></p>

@@ -40,7 +40,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      <nav aria-label="Main" className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-5 border-t border-ink/10 bg-white pb-[env(safe-area-inset-bottom)] md:hidden">
+      <nav aria-label="Main" className="mobile-nav fixed inset-x-0 bottom-0 z-30 grid grid-cols-5 border-t border-ink/10 bg-white pb-[env(safe-area-inset-bottom)] md:hidden">
         {links.map(({ to, label, icon: Icon, end }) => (
           <NavLink key={to} to={to} end={end}
             className={({ isActive }) =>

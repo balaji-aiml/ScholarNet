@@ -12,6 +12,7 @@ import userRoutes from './routes/userRoutes.js';
 import connectionRoutes from './routes/connectionRoutes.js';
 import eventRoutes from './routes/eventRoutes.js';
 import messageRoutes from './routes/messageRoutes.js';
+import rateLimit from 'express-rate-limit';
 
 if (!process.env.JWT_SECRET) {
   console.error('Missing JWT_SECRET. Copy .env.example to .env and set it.');
@@ -19,6 +20,14 @@ if (!process.env.JWT_SECRET) {
 }
 
 const app = express();
+
+app.set('trust proxy', 1); // needed on Render, otherwise every user looks like one IP
+
+const authLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 20, message: { message: 'Too many attempts, try again in 15 minutes' } });
+const apiLimiter = rateLimit({ windowMs: 60 * 1000, max: 200 });
+app.use('/api/auth', authLimiter);
+app.use('/api', apiLimiter);
+
 const origin = process.env.CLIENT_URL || 'http://localhost:5173';
 
 app.use(helmet());

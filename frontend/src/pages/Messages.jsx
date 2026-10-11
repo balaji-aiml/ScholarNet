@@ -129,7 +129,7 @@ export default function Messages() {
   const partner = contacts?.find((c) => c.user._id === active)?.user;
 
   return (
-    <div className="grid h-[calc(100dvh-8.5rem)] overflow-hidden rounded-2xl border border-ink/10 bg-white md:h-[calc(100dvh-7rem)] md:grid-cols-[320px_1fr]">
+    <div className="chat-shell grid overflow-hidden rounded-2xl border border-ink/10 bg-white md:grid-cols-[320px_1fr]">
       {/* Conversation list */}
       <aside className={`${active ? 'hidden md:flex' : 'flex'} flex-col overflow-y-auto border-ink/10 md:border-r`} aria-label="Conversations">
         <h1 className="sticky top-0 border-b border-ink/10 bg-white px-4 py-3 text-xl font-extrabold">Messages</h1>

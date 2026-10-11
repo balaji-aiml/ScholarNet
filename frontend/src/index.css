@@ -30,3 +30,11 @@
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+.kb-open .mobile-nav { display: none; }
+
+.chat-shell { height: calc(var(--vvh, 100dvh) - 8.5rem); }
+.kb-open .chat-shell { height: calc(var(--vvh, 100dvh) - 5rem); }
+@media (min-width: 768px) {
+  .chat-shell { height: calc(100dvh - 7rem); }
+}
